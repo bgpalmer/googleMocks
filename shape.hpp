@@ -2,38 +2,40 @@
 #define SHAPE_HPP
 
 #include <cmath>
+#include <exception>
+#include <iostream>
 
 class Shape {
 public:
 	virtual double area() = 0;
 	virtual double perimeter() = 0;
-	Shape(unsigned n) : n_sides_(n) { }
+	Shape(int n) : n_sides_(n) { }
 protected:
-	unsigned n_sides_;
+	int n_sides_;
 };
 
 class Rectangle : public Shape {
 public:
-	Rectangle(unsigned width, unsigned height) : Shape(4) {
+	Rectangle(const int width, const int height) : Shape(4) {
 		width_ = width;
 		height_ = height;
 	}
 	double area();
 	double perimeter();
 
-private:
-	unsigned width_;
-	unsigned height_;
+protected:
+	int width_;
+	int height_;
 };
 
 class EquilateralTriangle : public Shape {
 public:
-	EquilateralTriangle(unsigned sideLength) : Shape(3), length_(sideLength) { }
+	EquilateralTriangle(int);
 	double area();
 	double perimeter();
 
-private:
-	unsigned length_;
+protected:
+	int length_;
 };
 
 #endif

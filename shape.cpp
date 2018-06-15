@@ -9,9 +9,14 @@ double Rectangle::perimeter() {
 }
 
 double EquilateralTriangle::area() {
-	return (0.5) * (length_ / 2) * (sqrt(3) * (length_ / 2));
+	return (sqrt(3) / 4) * pow(length_, 2);
 }
 
 double EquilateralTriangle::perimeter() {
 	return n_sides_ * length_;
+}
+
+EquilateralTriangle::EquilateralTriangle(int sideLength) : Shape(3) {
+	if (sideLength < 1) { throw std::out_of_range("Cannot have negative side length."); }
+	length_ = sideLength;
 }
